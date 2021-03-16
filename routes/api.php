@@ -27,6 +27,13 @@ Route::post('login', '\App\Http\Controllers\authController@login');
 Route::post('register', '\App\Http\Controllers\authController@register');
 
 Route::group(['middleware' => 'auth:api'], function(){
+    Route::get('user', '\App\Http\Controllers\UserController@user');
+
+    Route::put('users/info', '\App\Http\Controllers\UserController@updateInfo');
+    Route::put('users/password', '\App\Http\Controllers\UserController@updatePassword');
+    Route::get('users/user', '\App\Http\Controllers\UserController@user');
+
     Route::apiResource('users', '\App\Http\Controllers\UserController');
+    Route::apiResource('roles', '\App\Http\Controllers\RoleController');
 
 });
